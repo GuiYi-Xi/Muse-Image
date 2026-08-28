@@ -4,6 +4,10 @@
 
 ![Muse Image 文字生图界面](docs/screenshots/text-to-image.png)
 
+## 使用视频
+
+[点击观看 Muse Image 完整使用演示（约 2 分 10 秒）](https://github.com/GuiYi-Xi/Muse-Image/releases/download/v1.0.2/Muse-Image-demo.mp4)
+
 ## 功能
 
 - 文字生图，一次生成 1-4 张图片
