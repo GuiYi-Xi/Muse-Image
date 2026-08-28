@@ -1,0 +1,12 @@
+.playwright-cli/
+PC版界面预览.png
+.codex/
+.vscode/
+.idea/
+output/
+dist/
+*.log
+*.tmp
+*.zip
+Thumbs.db
+Desktop.ini
