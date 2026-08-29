@@ -4,6 +4,15 @@
 
 ![Muse Image 文字生图界面](docs/screenshots/text-to-image.png)
 
+## 产品概览
+
+- **用户问题**：非技术用户难以正确配置模型接口与 API Key，也难以处理多参考图、并行生成、长任务等待、取消和失败恢复。
+- **产品方案**：使用原生 Web 前端配合 Windows 本地 API 代理，把接口配置、生成任务、标注编辑、历史记录和文件下载封装为桌面工作流。
+- **我的工作**：负责需求定义、产品流程、交互与界面、本地代理方案、任务状态设计、测试、Windows 启动器和用户文档。
+- **交付形态**：无需安装 Python 或 Node.js，下载后通过 `START_WINDOWS.cmd` 启动；仓库提供源码、预编译服务、截图和完整演示视频。
+
+该项目定位为独立开源客户端，不提供模型算力或托管服务；用户需要自行配置兼容接口并承担相应费用。
+
 ## 使用视频
 
 [点击观看 Muse Image 完整使用演示（约 2 分 10 秒）](https://github.com/GuiYi-Xi/Muse-Image/releases/download/v1.0.2/Muse-Image-demo.mp4)
