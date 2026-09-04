@@ -26,6 +26,7 @@
 - 图片框选、画笔标注、单步撤回和清除全部
 - 将标注结果直接发送到参考图编辑
 - 本地项目文件夹、作品历史和提示词预设
+- 可指定本机历史储存文件夹，按项目独立保存图片与记录索引
 - 查看、复制、复用提示词以及下载原图
 - 自定义兼容接口的 Base URL 与 API Key
 
@@ -51,6 +52,7 @@
 2. 双击 `START_WINDOWS.cmd`。
 3. 浏览器将打开 `http://127.0.0.1:8765/index.html`。如果端口被占用，程序会自动尝试 8766-8785。
 4. 点击右上角 `...`，填写兼容接口的 Base URL 和 API Key。
+5. 建议在设置中的“历史储存位置”选择一个本机文件夹；之后每个项目会有独立目录，生成图片和提示词索引会自动备份到其中。
 
 项目内已包含预编译的 `GPT_Image_Server.exe`，Windows 10/11 无需额外安装运行环境。使用期间请保持启动窗口开启。
 
@@ -59,7 +61,7 @@
 修改 `portable_server.c` 后，可通过 MinGW-w64 编译：
 
 ```bash
-x86_64-w64-mingw32-gcc -O2 -Wall -o GPT_Image_Server.exe portable_server.c -lwinhttp -lws2_32 -lshell32
+x86_64-w64-mingw32-gcc -O2 -Wall -o GPT_Image_Server.exe portable_server.c -lwinhttp -lws2_32 -lshell32 -luser32
 ```
 
 也可以在已配置该编译器的环境中运行 `BUILD_SERVER.cmd`。
@@ -73,12 +75,15 @@ GPT_Image_Server.exe    预编译 Windows 可执行文件
 START_WINDOWS.cmd       启动脚本
 BUILD_SERVER.cmd        编译脚本
 muse-logo.png           应用图标
+output/                 运行后自动生成的项目历史图片与索引（不会提交到仓库）
 ```
 
 ## 数据与安全
 
 - 仓库不包含任何 Base URL 或 API Key。
-- 接口配置、提示词预设和作品历史仅保存在浏览器本地存储中。
+- 接口配置和提示词预设保存在浏览器本地；作品历史默认同步到应用目录旁的 `output`，浏览器 IndexedDB 作为快速读取缓存。
+- 选择历史储存文件夹后，根目录会生成 `projects.json`，每个项目目录内保存 `records.json` 和原始 PNG；清除浏览器站点数据后，可在设置中点击“从文件夹恢复”。
+- 历史文件夹由浏览器授权访问，重装浏览器或更换浏览器后可能需要重新点击“从文件夹恢复”并再次授权；请不要移动或删除该目录中的文件。
 - 本地服务只监听 `127.0.0.1`，不会主动暴露到局域网。
 - 不要公开带有密钥的设置截图或浏览器用户数据目录。
 - 生成请求可能产生接口费用，提交前请确认所使用服务的计费规则。

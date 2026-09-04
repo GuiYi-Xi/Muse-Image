@@ -8,7 +8,7 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-x86_64-w64-mingw32-gcc -O2 -Wall -o GPT_Image_Server.exe portable_server.c -lwinhttp -lws2_32 -lshell32
+x86_64-w64-mingw32-gcc -O2 -Wall -o GPT_Image_Server.exe portable_server.c -lwinhttp -lws2_32 -lshell32 -luser32
 if errorlevel 1 (
   echo Build failed.
   pause
